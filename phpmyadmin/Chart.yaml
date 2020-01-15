@@ -1,14 +1,14 @@
 apiVersion: v1
 name: phpmyadmin
-version: 4.2.5
-appVersion: 4.9.3
-description: phpMyAdmin is an mysql administration frontend
+version: 5.0.1
+appVersion: 0.1.0
+description: phpMyAdmin for rancher deplyment
 keywords:
 - mariadb
 - mysql
 - phpmyadmin
 home: https://www.phpmyadmin.net/
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Telekom_Logo_2013.svg/250px-Telekom_Logo_2013.svg.png
+icon: https://www.coriaweb.hosting/wp-content/uploads/2016/06/logo-og.png
 sources:
 - https://github.com/bitnami/bitnami-docker-phpmyadmin
 maintainers:

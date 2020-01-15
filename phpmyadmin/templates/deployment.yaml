@@ -52,7 +52,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: PMA_PORT
-              value: "3306"
+              value: {{ .Values.db.port }}
             - name: PMA_HOST
               value: {{ .Values.db.host }}           
             - name: PMA_USER
