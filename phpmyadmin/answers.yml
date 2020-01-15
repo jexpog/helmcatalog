@@ -5,8 +5,8 @@ imagepullPolicy: IfNotPresent
 db.host: "-"
 db.user: "User"
 db.password: "Passwrod"
-service.type: ""
-service.port: 80
 ingress.enabled: true
 'ingress.hosts[0]': xip.io
+service.type: ""
+service.nodeport: 80
 

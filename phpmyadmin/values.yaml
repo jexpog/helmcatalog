@@ -38,21 +38,19 @@ db:
 
 ingress:
 
-  enabled: false
+  enabled: true
 
   certManager: false
 
   annotations:
     ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/rewrite-target: /
+    
+  labels: {}
+  path: /
   hosts:
-  - name: phpmyadmin.local
-    path: /
-
-    tls: false
-
-
-    tlsSecret: phpmyadmin.local-tls
+    - chart-example.local
+  tls: []
 
 
 probesEnabled: true

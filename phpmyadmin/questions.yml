@@ -41,7 +41,7 @@ questions:
   type: boolean
   label: Expose Phpmyadmin using Layer 7 Load Balancer - insgress
   show_subquestion_if: true
-  group: "Service Load Balancing"
+  group: "Service and Load Balancing"
   requidred: true
   subquestions:
   - variable: ingress.hosts[0]
@@ -49,4 +49,25 @@ questions:
     description: "Hostname your Phphmyadmin instalation"
     type: hostname
     required: true
-    label: hostname      
+    label: hostname
+- variable: service.type
+  default: "NodePort"
+  description: "Phpmyadmin service type"
+  type: enum
+  group: "Service and Load Balancing"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+  required: true
+  label: Grafana Service Type
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: service.nodePort
+    default: ""
+    description: "NodePort http port(to set explicitly, choose port between 30000-32767)"
+    type: int
+    min: 30000
+    max: 32767
+    show_if: "ingress.enabled=false"
+    label: Phphmyadmin NodePort Number    
+          
