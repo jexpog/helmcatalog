@@ -31,9 +31,11 @@ questions:
   type: string
   label: "Define Database Host"
 - variable: ingress.enabled
-  default: false
+  default: true
   description: "Expose Phpmyadmin using Layer 7 load Balancer - ingress"
   type: boolean
+  label: Expose Phpmyadmin using Layer 7 Load Balancer - insgress
+  show_subquestion_if: true
   group: "Service Load Balancing"
   requidred: true
   subquestions:
