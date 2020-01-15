@@ -7,7 +7,6 @@ persistence.enabled: false
 persistence.storageClass: "-"
 persistence.accessMode: ReadWriteOnce
 persistence.size: 10Gi
-persistence.accesModes: ReadWriteOnce
 persistence.annotations: {}
 nodeSelector: {}
 podAnnotations: {}

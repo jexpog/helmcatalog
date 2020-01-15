@@ -50,4 +50,9 @@ questions:
     default: ""     
     description: "Select storageClass ej. longhorn"
     type: storageclass
-    label: StorageClass for Percona Cluster   
+    label: StorageClass for Percona Cluster
+  - variable: persistence.accessMode
+    default: "ReadWriteOnce"
+    description: "Mode acces node"
+    type: string     
+    label: Percona nodes acces storage
