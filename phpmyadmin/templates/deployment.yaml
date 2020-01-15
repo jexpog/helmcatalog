@@ -48,19 +48,17 @@ spec:
             - "status.localhost"
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ template "phpmyadmin.image" . }}
+          image: "{{ .Valuesimage.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: DATABASE_PORT_NUMBER
+            - name: PMA_PORT
               value: {{ .Values.db.port }}
-            - name: DATABASE_HOST
+            - name: PMA_HOST
               value: {{ .Values.db.host }}           
-            - name: PHPMYADMIN_ALLOW_NO_PASSWORD
-              value: true
-            - name: PHPMYADMIN_ALLOW_ARBITRARY_SERVER
-              value: true           
-            - name: PHPMYADMIN_ALLOW_NO_PASSWORD
-              value: false
+            - name: PMA_USER
+              value: {{ .Values.db.host }} 
+            - name: PMA_PASSWORD
+              value: {{ .Values.db.host }}                
           ports:
             - name: http
               containerPort: 80
@@ -80,11 +78,6 @@ spec:
           {{- end }}
           {{- if .Values.resources }}
           resources: {{ toYaml .Values.resources | nindent 12 }}
-          {{- end }}
-          {{- if .Values.db.enableSsl }}
-          volumeMounts:
-          - name: ssl-certs
-            mountPath: /certs
           {{- end }}
 {{- if .Values.metrics.enabled }}
         - name: metrics
