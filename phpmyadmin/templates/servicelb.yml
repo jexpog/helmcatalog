@@ -4,10 +4,10 @@ metadata:
   name: {{ template "phpmyadmin.fullname" . }}
 spec:
   rules:
-  - host: "phpmyadmin.casa"
+  - host: {{ .Values.ingress.hosts[0] }}
     http:
       paths:
       - backend:
-          serviceName: demo
+          serviceName: {{ template "phpmyadmin.fullname" . }}
           servicePort: 80
         path: /
