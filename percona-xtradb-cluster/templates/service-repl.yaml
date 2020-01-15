@@ -8,6 +8,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
+  type: ExternalName
+  externalName: mysql.slave.cluster.local
   clusterIP: None
   ports:
   - name: galera
