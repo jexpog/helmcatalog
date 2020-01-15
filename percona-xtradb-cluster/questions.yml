@@ -33,9 +33,9 @@ questions:
   label: Acces for root Ip range
   group: Percona Configure Values
 - variable: configFiles.node.cnf
-  default:         |+
-    [mysqld]
-    datadir=/var/lib/mysql
+  default: |+
+    [mysqld]\n
+    datadir=/var/lib/mysql\n
     default_storage_engine=InnoDB
     binlog_format=ROW
     innodb_flush_log_at_trx_commit  = 0
