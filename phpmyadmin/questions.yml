@@ -20,11 +20,6 @@ questions:
     type: string
     label: Phpmyadmin Image Tag
 #######config parameters#######
-- variable: db.port
-  default: "3306"
-  description: "Database Port"
-  type: string
-  label: Define Database port default 3306
 - variable: db.host
   default: "" 
   decription: "Define Database Host"
