@@ -48,7 +48,7 @@ spec:
             - "status.localhost"
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Valuesimage.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: PMA_PORT
