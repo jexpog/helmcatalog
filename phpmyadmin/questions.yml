@@ -59,9 +59,9 @@ questions:
     - "NodePort"
     - "LoadBalancer"
   required: true
-  label: Grafana Service Type
+  label: Phpmyadmin Service Type
   show_subquestion_if: "NodePort"
-  group: "Services and Load Balancing"
+  group: "Service and Load Balancing"
   subquestions:
   - variable: service.nodePorts.http
     default: ""

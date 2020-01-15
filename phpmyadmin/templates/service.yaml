@@ -8,15 +8,15 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    app: {{ template "phpmyadmin.name" . }}
-    release: {{ .Release.Name }}
+#  type: {{ .Values.service.type }}
+#  ports:
+#    - port: {{ .Values.service.port }}
+#      targetPort: http
+#      protocol: TCP
+#      name: http
+#  selector:
+#    app: {{ template "phpmyadmin.name" . }}
+#    release: {{ .Release.Name }}
   {{- if eq .Values.service.type "LoadBalancer" }}
     type: {{ .Values.service.type }}
     {{- if .Values.service.loadBalancerIP }}
