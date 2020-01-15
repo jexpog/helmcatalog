@@ -1,0 +1,45 @@
+labels:
+  io.cattle.role: cluster
+questions:
+- variable: defaultImage
+  default: true
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "bitnami/phpmyadmin"
+    description: "Percona Cluster image name"
+    type: string
+    label: Percona Image Name
+  - variable: image.tag
+    default: "4.9.3-debian-9-r0"
+    description: "Phpmyadmin image tag"
+    type: string
+    label: Phpmyadmin Image Tag
+#######config parameters#######
+- variable: db.port
+  default: 3306
+  description: "Database Port"
+  type: int
+  label: Define Database port default 3306
+- variable: db.host
+  default: "" 
+  decription: "Define Database Host"
+  type: string
+  label: "Define Database Host"
+- variable: ingres.enabled
+  default: false
+  description: "Expose Phpmyadmin using Layer 7 load Balancer - ingress"
+  type: boolean
+  group: "Service Load Balancing"
+  requidred: true
+  subquestions:
+  - variable: ingress.hosts[0]
+    default: "xip.io"
+    description: "Hostname your Phphmyadmin instalation"
+    type: hostname
+    required: true
+    label: hostname      
