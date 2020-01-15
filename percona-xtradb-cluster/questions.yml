@@ -23,7 +23,7 @@ questions:
 ######configuration form####
 - variable: replicas
   delault: 2
-  description: "Numbre of replication nodes for cluster"
+  description: "Replica Count"
   type: int
   label: Replication node for cluster
   group: "Replication settings"
@@ -34,8 +34,8 @@ questions:
   group: Percona Configure Values
 - variable: configFiles.node.cnf
   default: |+
-    [mysqld]\n
-    datadir=/var/lib/mysql\n
+    [mysqld]
+    datadir=/var/lib/mysql
     default_storage_engine=InnoDB
     binlog_format=ROW
     innodb_flush_log_at_trx_commit  = 0
@@ -48,7 +48,7 @@ questions:
     wsrep_provider=/usr/lib/galera3/libgalera_smm.so
     wsrep_cluster_name=galera
     wsrep_sst_method=xtrabackup-v2
-  type: string
+  type: multiline
   label: Config file cnf
   group: Percona Configure Values
 - variable: persistence.enabled
