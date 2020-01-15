@@ -25,7 +25,10 @@ questions:
   delault: 2
   description: "Replica Count"
   type: int
+  required: true
   label: Replication node for cluster
+  show_subquestion_if: true
+  min: 2
   group: "Replication settings"
 - variable: allowRootFrom
   default: "%"
