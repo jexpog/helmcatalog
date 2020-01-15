@@ -49,7 +49,7 @@ questions:
     wsrep_cluster_name=galera
     wsrep_sst_method=xtrabackup-v2
   description: "Configure file .cnf"
-  type: multiline
+  type: string
   label: Percona file config  
 - variable: persistence.enabled
   default: false
