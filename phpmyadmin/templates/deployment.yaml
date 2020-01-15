@@ -56,13 +56,11 @@ spec:
             - name: DATABASE_HOST
               value: {{ .Values.db.host }}           
             - name: PHPMYADMIN_ALLOW_NO_PASSWORD
-              value: "true"
+              value: true
             - name: PHPMYADMIN_ALLOW_ARBITRARY_SERVER
-              value: "true"           
+              value: true           
             - name: PHPMYADMIN_ALLOW_NO_PASSWORD
-              value: "false"
-            - name: DATABASE_ENABLE_SSL
-              value: {{ ternary "yes" "no" .Values.db.enableSsl | quote }}
+              value: false
           ports:
             - name: http
               containerPort: 80
