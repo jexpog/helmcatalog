@@ -5,6 +5,6 @@ imagepullPolicy: IfNotPresent
 db.port: 3306
 db.host: "-"
 ingress.enabled: true
-ingress.hosts[0]: xip.io
+'ingress.hosts[0]': xip.io
 service.type: clusterIp
 service.port: 80

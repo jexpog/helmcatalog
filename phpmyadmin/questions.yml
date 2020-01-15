@@ -30,7 +30,7 @@ questions:
   decription: "Define Database Host"
   type: string
   label: "Define Database Host"
-- variable: ingres.enabled
+- variable: ingress.enabled
   default: false
   description: "Expose Phpmyadmin using Layer 7 load Balancer - ingress"
   type: boolean
