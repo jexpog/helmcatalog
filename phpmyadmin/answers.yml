@@ -6,7 +6,7 @@ db.host: "-"
 db.user: "User"
 db.password: "Passwrod"
 ingress.enabled: true
-'ingress.hosts[0]': xip.io
+service.hostname: "xip.io"
 service.type: ""
 service.nodeport: 80
 

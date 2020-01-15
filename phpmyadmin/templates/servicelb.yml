@@ -4,7 +4,7 @@ metadata:
   name: {{ template "phpmyadmin.fullname" . }}
 spec:
   rules:
-  - host: {{ .Values.ingress.hosts[0] }}
+  - host: {{ .Values.service.hostname }}
     http:
       paths:
       - backend:

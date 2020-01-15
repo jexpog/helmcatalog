@@ -44,7 +44,7 @@ questions:
   group: "Service and Load Balancing"
   requidred: true
   subquestions:
-  - variable: ingress.hosts[0]
+  - variable: service.hostname
     default: "xip.io"
     description: "Hostname your Phphmyadmin instalation"
     type: hostname
