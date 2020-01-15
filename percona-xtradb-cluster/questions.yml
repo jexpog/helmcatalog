@@ -49,5 +49,5 @@ questions:
   - variable: persistence.storageClass
     default: ""     
     description: "Select storageClass ej. longhorn"
-    type: storageclass 
+    type: storageclass
     label: StorageClass for Percona Cluster   
