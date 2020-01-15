@@ -60,10 +60,10 @@ spec:
             - name: PMA_PASSWORD
               value: {{ .Values.db.host }}                
           ports:
-            - name: http
-              containerPort: 80
+            - name: service
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
-            - name: https
+            - name: phpmyadmin
               containerPort: 443
               protocol: TCP
           {{- if .Values.probesEnabled }}
