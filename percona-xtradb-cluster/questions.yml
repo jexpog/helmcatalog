@@ -1,12 +1,37 @@
 labels:
   io.cattle.role: cluster
 questions:
+- variable: defaultImage
+  default: true
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "percona/percona-xtradb-cluster"
+    description: "Percona Cluster image name"
+    type: string
+    label: Percona Image Name
+  - variable: image.tag
+    default: "5.7.19"
+    description: "Percona image tag"
+    type: string
+    label: Percona Image Tag
+
+######configuration form####
 - variable: replicas
   delault: "2"
   description: "Numbre of replication nodes for cluster"
   type: int
   label: Replication node for cluster
-  group: "Replication settings"  
+  group: "Replication settings"
+- variable: allowRootFrom
+  default: "%"
+  type: string
+  label: Acces for root Ip
+  group: Percona Configure Values     
 - variable: persistence.enabled
   default: false
   description: "Persistent storage for cluster percona"
