@@ -22,7 +22,7 @@ questions:
 
 ######configuration form####
 - variable: replicas
-  delault: "2"
+  delault: 2
   description: "Numbre of replication nodes for cluster"
   type: int
   label: Replication node for cluster
