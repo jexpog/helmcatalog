@@ -1,0 +1,28 @@
+labels:
+  io.cattle.role: cluster
+questions:
+- variable: replicas
+  delault: 2
+  description: "Numbre of replication nodes for cluster"
+  type: int
+  label: Replication node for cluster
+  group: "Replication settings"  
+- variable: persistence.enabled
+  default: false
+  description: "Persistent storage for cluster percona"
+  type: boolean
+  required: true
+  label: Percona persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Percona settings"
+  subquestions:
+  - variable: persistence.size
+    default: "10Gi"
+    description: "Storage size for each replication"
+    type: string
+    label: Percona Volum size
+  - variable: persistence.storageClass
+    default: ""     
+    description: "Select storageClass ej. longhorn"
+    type: storageClass 
+    label: StorageClass for Percona Cluster   
