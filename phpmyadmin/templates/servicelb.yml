@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin-LoadBalancer
+  name: loadbalancer-0
   labels:
     app: {{ template "phpmyadmin.name" . }}
     chart: {{ template "phpmyadmin.chart" . }}
