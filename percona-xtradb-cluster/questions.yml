@@ -2,7 +2,7 @@ labels:
   io.cattle.role: cluster
 questions:
 - variable: replicas
-  delault: 2
+  delault: "2"
   description: "Numbre of replication nodes for cluster"
   type: int
   label: Replication node for cluster
@@ -24,5 +24,5 @@ questions:
   - variable: persistence.storageClass
     default: ""     
     description: "Select storageClass ej. longhorn"
-    type: storageClass 
+    type: StorageClass 
     label: StorageClass for Percona Cluster   
