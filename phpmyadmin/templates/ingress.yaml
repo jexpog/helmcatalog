@@ -1,8 +1,8 @@
-{{- if .Values.ingress.enabled -}}
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
   name: {{ template "phpmyadmin.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "phpmyadmin.name" . }}
     chart: {{ template "phpmyadmin.chart" . }}
@@ -16,7 +16,6 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-
 {{- if (or (eq .Values.service.type "ClusterIP") (empty .Values.service.type)) }}
   type: ClusterIP
   {{- if .Values.service.clusterIP }}
