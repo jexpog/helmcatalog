@@ -53,7 +53,6 @@ spec:
           env:
             - name: DATABASE_PORT_NUMBER
               value: {{ .Values.db.port }}
-            {{- if .Values.db.chartName }}
             - name: DATABASE_HOST
               value: {{ .Values.db.host }}
             {{- if and (not .Values.db.chartName) (not .Values.db.host) }}
@@ -130,16 +129,16 @@ spec:
           resources: {{ toYaml .Values.metrics.resources | nindent 12 }}
           {{- end }}
 {{- end }}
-  {{- if .Values.db.enableSsl }}
-        volumes:
-          - name: ssl-certs
-            secret:
-              secretName: {{ template "phpmyadmin.fullname" . }}-certs
-              items:
-                - key: server_key.pem
-                  path: server_key.pem
-                - key: server_certificate.pem
-                  path: server_certificate.pem
-                - key: ca_certificate.pem
-                  path: ca_certificate.pem
-  {{- end }}
+{{- if .Values.db.enableSsl }}
+      volumes:
+        - name: ssl-certs
+          secret:
+            secretName: {{ template "phpmyadmin.fullname" . }}-certs
+            items:
+              - key: server_key.pem
+                path: server_key.pem
+              - key: server_certificate.pem
+                path: server_certificate.pem
+              - key: ca_certificate.pem
+                path: ca_certificate.pem
+{{- end }}
