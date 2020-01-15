@@ -2,7 +2,6 @@ image.registry: docker.io
 image.repository: phpmyadmin/phpmyadmin
 image.tag: 5.0.1
 imagepullPolicy: IfNotPresent
-db.port: "3306"
 db.host: "-"
 db.user: "User"
 db.password: "Passwrod"
