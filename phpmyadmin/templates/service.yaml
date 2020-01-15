@@ -27,3 +27,11 @@ spec:
   {{ toYaml .Values.service.loadBalancerSourceRanges | indent 4 }}
     {{- end -}}
   {{- end }}
+    ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "phpmyadmin.name" . }}
+    release: {{ .Release.Name }}
