@@ -26,4 +26,4 @@ spec:
   loadBalancerSourceRanges:
 {{ toYaml .Values.service.loadBalancerSourceRanges | indent 4 }}
   {{- end -}}
-{{- else }}
+{{- end }}
