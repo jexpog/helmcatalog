@@ -1,7 +1,7 @@
 image.repository: "percona/percona-xtradb-cluster"
 image.tag: "5.7.19"
 image.pullPolicy: IfNotPresent
-replicas: 3
+replicas: 2
 allowRootFrom: "%"
 persistence.enabled: false
 persistence.storageClass: "-"
