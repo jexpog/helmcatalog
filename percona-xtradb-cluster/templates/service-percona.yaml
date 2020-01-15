@@ -8,8 +8,6 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  type: ExternalName
-  externalName: mysql.master.cluster.local
   {{- if .Values.service.percona.headless }}
   clusterIP: None
   {{- end }}
