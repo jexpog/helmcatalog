@@ -20,8 +20,8 @@ replicas: 3
 
 ## Uncomment to create a database user
 ##
-# mysqlUser: test
-# mysqlPassword: test
+mysqlUser: test
+mysqlPassword: test
 
 ## Allow unauthenticated access, uncomment to enable
 ##

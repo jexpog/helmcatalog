@@ -27,6 +27,20 @@ questions:
   required: true
   label: Replication node for cluster
   group: "Replication settings"
+- variable: mysqlUser
+  delault: ""
+  description: "Mysql User"
+  type: string
+  required: true
+  label: Define Mysql User
+  group: "Replication settings"
+- variable: mysqlPassword
+  delault: ""
+  description: "Mysql Password"
+  type: string
+  required: true
+  label: Mysql Password
+  group: "Replication settings"  
 - variable: allowRootFrom
   default: "%"
   type: string
