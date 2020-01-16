@@ -8,7 +8,7 @@ keywords:
 - mysql
 - phpmyadmin
 home: https://www.phpmyadmin.net/
-icon: https://www.coriaweb.hosting/wp-content/uploads/2016/06/logo-og.png
+icon: https://cms-assets.tutsplus.com/uploads/users/34/posts/21947/preview_image/php-my-admin.png
 sources:
 - https://github.com/bitnami/bitnami-docker-phpmyadmin
 maintainers:
