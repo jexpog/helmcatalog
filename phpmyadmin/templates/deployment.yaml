@@ -56,9 +56,9 @@ spec:
             - name: PMA_HOST
               value: {{ .Values.db.host }}           
             - name: PMA_USER
-              value: {{ .Values.mysqlUser }} 
+              value: {{ .Values.db.mysqlUser }} 
             - name: PMA_PASSWORD
-              value: {{ .Values.mysqlPassword }}                
+              value: {{ .Values.db.mysqlPassword }}                
           ports:
             - name: http
               containerPort: 80

@@ -27,14 +27,14 @@ questions:
   required: true
   label: Replication node for cluster
   group: "Replication settings"
-- variable: mysqlUser
+- variable: db.mysqlUser
   delault: ""
   description: "Mysql User"
   type: string
   required: true
   label: Define Mysql User
   group: "Replication settings"
-- variable: mysqlPassword
+- variable: db.mysqlPassword
   delault: ""
   description: "Mysql Password"
   type: string

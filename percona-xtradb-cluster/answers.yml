@@ -2,8 +2,8 @@ image.repository: "percona/percona-xtradb-cluster"
 image.tag: "5.7.19"
 image.pullPolicy: IfNotPresent
 replicas: 2
-mysqlUser: test
-mysqlPassword: test
+db.mysqlUser: test
+db.mysqlPassword: test
 allowRootFrom: "%"
 persistence.enabled: false
 persistence.storageClass: "-"

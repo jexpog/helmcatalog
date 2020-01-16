@@ -34,7 +34,9 @@ db:
     ## Enable SSL certificate validation
     ##
     verify: true
-  host: "-"    
+  host: "-"
+  mysqlUser: ""
+  mysqlPassword: ""   
 
 ingress:
 
