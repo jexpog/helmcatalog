@@ -25,12 +25,12 @@ questions:
   decription: "Define Database Host"
   type: string
   label: "Define Database Host"
-- variable: db.user
+- variable: db.mysqlUser
   default: "User" 
   decription: "Define Database User"
   type: string
   label: "Define Database User"
-- variable: db.password
+- variable: db.mysqlPassword
   default: "Password" 
   decription: "Define Database Password"
   type: string

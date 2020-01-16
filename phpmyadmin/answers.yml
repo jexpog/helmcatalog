@@ -3,8 +3,8 @@ image.repository: phpmyadmin/phpmyadmin
 image.tag: 5.0.1
 imagepullPolicy: IfNotPresent
 db.host: "-"
-db.user: "User"
-db.password: "Passwrod"
+db.mysqlUser: "-"
+db.mysqlPassword: "-"
 ingress.enabled: true
 service.hostname: "xip.io"
 service.type: ""

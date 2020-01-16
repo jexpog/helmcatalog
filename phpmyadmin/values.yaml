@@ -35,8 +35,8 @@ db:
     ##
     verify: true
   host: "-"
-  mysqlUser: ""
-  mysqlPassword: ""   
+  mysqlUser: "-"
+  mysqlPassword: "-"   
 
 ingress:
 
