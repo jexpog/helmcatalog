@@ -5,7 +5,7 @@ metadata:
 spec:
   rules:
   - host: "mysqlmaster-toolstc.t-systems.es"
-    tcp:
+    http:
       path:
       - backend:
           serviceName: {{ template "percona-xtradb-cluster.fullname" . }}
