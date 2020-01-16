@@ -27,13 +27,6 @@ questions:
   required: true
   label: Replication node for cluster
   group: "Replication settings"
-- variable: mysqlRootPassword
-  delault: ""
-  description: "Mysql root Password"
-  type: string
-  required: true
-  label: Mysql Root Password
-  group: "Replication settings"  
 - variable: allowRootFrom
   default: "%"
   type: string
