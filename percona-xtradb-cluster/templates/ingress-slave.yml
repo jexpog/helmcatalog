@@ -1,0 +1,13 @@
+appiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "percona.fullname" . }}
+spec:
+  rules:
+  - host: "mysqlslave-toolstc.t-systems.es"
+    tcp:
+      path:
+      - backend:
+          serviceName: "{{ template "percona-xtradb-cluster.fullname" . }}-repl"
+          servicePort: 3306
+        path: /
