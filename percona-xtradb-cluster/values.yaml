@@ -20,6 +20,7 @@ replicas: 3
 
 ## Uncomment to create a database user
 ##
+mysqlRootPassword: "-"
 
 ## Allow unauthenticated access, uncomment to enable
 ##

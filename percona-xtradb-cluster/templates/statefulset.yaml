@@ -72,6 +72,8 @@ spec:
           value: {{ default "" .Values.mysqlDatabase | quote }}
         - name: ALLOW_ROOT_FROM
           value: {{ .Values.allowRootFrom | quote }}
+        - name: MYSQL_ROOT_PASSWORD
+          values: {{ .Values.mysqlRootPassword | quote }}  
         - name: CLUSTER_NAME
           value: {{ template "percona-xtradb-cluster.fullname" . }}
         - name: SHORT_CLUSTER_NAME
