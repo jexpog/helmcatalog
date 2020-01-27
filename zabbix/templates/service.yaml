@@ -1,9 +1,13 @@
 apiVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "zabbix.fullname" . }}
   labels:
-    {{- template "zabbix.labels" . | nindent 4 }}
+    app: {{ template "zabbix.name" . }}
+    chart: {{ template "zabbix.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,5 +16,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "zabbix.selectorLabels" . | nindent 4 }}
-    
+    app: {{ template "zabbix.name" . }}
+    release: {{ .Release.Name }}
