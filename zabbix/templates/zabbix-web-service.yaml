@@ -16,5 +16,3 @@ spec:
     name: {{ template "zabbix.fullname" . }}-web-https
   selector:
     name: {{ template "zabbix.fullname" . }}-web
-  externalIPs:
-  - "{{ .Values.Web.ExternalIP }}"
