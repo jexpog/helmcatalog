@@ -1,0 +1,9 @@
+apiVersion: autoscaling/v1
+kind:
+metadata:
+  name: ""
+spec: 
+  masReplica: 5
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: app/
