@@ -63,7 +63,21 @@ spec:
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
-            value: zabbix 
+            value: zabbix
+        - name: zabbix-db
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: mysql:8.0.19
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: zabbix
+          - name: MYSQL_DATABASE
+            value: zabbix
+          - name: MYSQL_USER
+            value: zabbix
+          - name: MYSQL_PASSWORD
+            value: zabbix      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
