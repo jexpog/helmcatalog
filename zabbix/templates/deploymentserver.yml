@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: zabbix-db
+  name: zabbix-server
   labels:
     app: zabbix
-    tier: zabbix-db
+    tier: zabbix-server
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: zabbix-db
+        name: zabbix-server
         app: zabbix
-        tier: zabbix-db
+        tier: zabbix-server
     spec:
       containers:
         - name: zabbix-server
