@@ -44,26 +44,7 @@ spec:
               containerPort: 80
               protocol: TCP 
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-        - name: zabbix-server
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: zabbix/zabbix-server-mysql:ubuntu-3.0.29
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-          - name: DB_SERVER_HOST
-            value: zabbix-db
-          - name: MYSQL_USER
-            value: zabbix
-          - name: MYSQL_PASSWORD
-            value: zabbix
-          ports:
-            - name: service
-              containerPort: 10051
-              protocol: TCP
-            - name: zabbix-server
-              containerPort: 10051
-              protocol: TCP      
+            {{- toYaml .Values.resources | nindent 12 }}     
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
