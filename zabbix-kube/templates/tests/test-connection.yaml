@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "zabbix.fullname" . }}-test-connection"
+  name: "{{ include "zabbix-kube.fullname" . }}-test-connection"
   labels:
-{{ include "zabbix.labels" . | nindent 4 }}
+{{ include "zabbix-kube.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test-success
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "zabbix.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['{{ include "zabbix-kube.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
