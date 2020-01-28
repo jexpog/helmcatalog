@@ -56,7 +56,14 @@ spec:
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
-            value: zabbix    
+            value: zabbix
+          ports:
+            - name: service
+              containerPort: 10051
+              protocol: TCP
+            - name: zabbix-server
+              containerPort: 10051
+              protocol: TCP      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

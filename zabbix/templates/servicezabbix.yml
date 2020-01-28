@@ -1,4 +1,4 @@
-appiVersion: v1
+apiVersion: v1
 Kind: Service
 metadata:
   name: zabbix-server
