@@ -1,0 +1,12 @@
+appiVersion: v1
+Kind: Service
+metadata:
+  name: zabbix-server
+  labbel:
+    app: zabbix
+spec:
+  ports:
+  - port: 10051
+    targetPort: 10051
+  selector:
+    name: zabbix-server  
