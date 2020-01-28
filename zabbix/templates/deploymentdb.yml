@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "zabbix.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include "zabbix.selectorLabels" . | nindent 6 }}
@@ -22,41 +22,23 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: zabbix-web
+        - name: zabbix-db
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: zabbix/zabbix-web-apache-mysql:ubuntu-3.0.29
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-          - name: DB_SERVER_HOST
-            value: zabbix-db
-          - name: MYSQL_USER
-            value: zabbix
-          - name: MYSQL_PASSWORD
-            value: zabbix
-          - name: ZBX_SERVER_HOST
-            value: zabbix-server
+          image: mysql:8.0.19
           ports:
-            - name: service
-              containerPort: 80
-              protocol: TCP
-            - name: zabbix
-              containerPort: 80
-              protocol: TCP 
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-        - name: zabbix-server
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: zabbix/zabbix-server-mysql:ubuntu-3.0.29
+          - containerPort: 3306
+            name: zabbix-db
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          - name: DB_SERVER_HOST
-            value: zabbix-db
+          - name: MYSQL_ROOT_PASSWORD
+            value: zabbix
+          - name: MYSQL_DATABASE
+            value: zabbix
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
-            value: zabbix    
+            value: zabbix      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
