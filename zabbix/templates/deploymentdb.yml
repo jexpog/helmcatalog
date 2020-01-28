@@ -1,35 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: {{ include "zabbix.fullname" . }}
+  name: zabbix-db
   labels:
-    {{- include "zabbix.labels" . | nindent 4 }}
+    app: zabbix
+    tier: zabbix-db
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      {{- include "zabbix.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "zabbix.selectorLabels" . | nindent 8 }}
+        name: zabbix-db
+        app: zabbix
+        tier: zabbix-db
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-      serviceAccountName: {{ include "zabbix.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: zabbix-db
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: mysql:8.0.19
           ports:
           - containerPort: 3306
-            name: zabbix-db
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+            name: mariadb
           env:
           - name: MYSQL_ROOT_PASSWORD
             value: zabbix
@@ -38,16 +28,11 @@ spec:
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
-            value: zabbix      
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+            value: zabbix
+          volumeMounts:
+          - name: zabbix-db-storage
+            mountPath: /var/lib/mysql
+      volumes:
+      - name: zabbix-db-storage
+        emptyDir:
+          medium: Memory
