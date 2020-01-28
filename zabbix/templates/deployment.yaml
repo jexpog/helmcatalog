@@ -39,17 +39,12 @@ spec:
           - name: PHP_TZ
             value: "Europa/Madrid" 
           ports:
-            - name: http
+            - name: service
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            - name: zabbix
+              containerPort: 80
+              protocol: TCP 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: zabbix-server
