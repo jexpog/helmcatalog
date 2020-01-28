@@ -25,7 +25,7 @@ spec:
         - name: zabbix-web
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: zabbix/zabbix-web-apache-mysql:ubuntu-4.0
+          image: zabbix/zabbix-web-apache-mysql:ubuntu-4.0.16
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: DB_SERVER_HOST
