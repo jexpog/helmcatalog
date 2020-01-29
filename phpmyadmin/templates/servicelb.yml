@@ -8,6 +8,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: {{ template "phpmyadmin.fullname" . }}
+          serviceName: "{{ template "phpmyadmin.fullname" . }}"
           servicePort: 80
         path: /

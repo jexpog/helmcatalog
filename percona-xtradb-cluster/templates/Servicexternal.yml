@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "percona-xtradb-cluster.fullname" . }}
+spec:
+  rules:
+  - host: "database-toolstc.t-systems.es"
+    http:
+      paths:
+      - backend:
+          serviceName: "percona-xtradb-cluster-pxc"
+          servicePort: 3306
+        path: /
