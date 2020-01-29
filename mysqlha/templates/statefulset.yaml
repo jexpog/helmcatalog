@@ -94,27 +94,18 @@ spec:
         imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
         env:
         - name: MYSQL_DATABASE
-          value: {{ default "" .Values.mysqlha.mysqlDatabase | quote }}
+          value: "zabbix"
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mysql-root-password
+          value: "zabbix"
         - name: MYSQL_REPLICATION_USER
-          value: {{ .Values.mysqlha.mysqlReplicationUser }}
+          value: "zabbix"
         - name: MYSQL_REPLICATION_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mysql-replication-password
+          value: "zabbix"
         {{ if .Values.mysqlha.mysqlUser }}
         - name: MYSQL_USER
-          value: {{ .Values.mysqlha.mysqlUser | quote }}
+          value: "zabbix"
         - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: mysql-password
+          value: "zabbix"
         {{ end }}
         ports:
         - name: mysql
