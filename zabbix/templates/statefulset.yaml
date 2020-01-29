@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ template "percona-xtradb-cluster.fullname" . }}
+  name: {{ include "percona-xtradb-cluster.fullname" . }}
   labels:
-    app: {{ template "percona-xtradb-cluster.fullname" . }}
+    app: {{ include "percona-xtradb-cluster.fullname" . }}
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ template "percona-xtradb-cluster.fullname" . }}
+      app: {{ include "percona-xtradb-cluster.fullname" . }}
       release: "{{ .Release.Name }}"
-  serviceName: {{ template "percona-xtradb-cluster.fullname" . }}
+  serviceName: {{ include "percona-xtradb-cluster.fullname" . }}
   template:
     metadata:
       labels:
-        app: {{ template "percona-xtradb-cluster.fullname" . }}
+        app: {{ include "percona-xtradb-cluster.fullname" . }}
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
@@ -58,18 +58,18 @@ spec:
         - name: XTRABACKUP_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ template "percona-xtradb-cluster.fullname" . }}
+              name: {{ include "percona-xtradb-cluster.fullname" . }}
               key: xtrabackup-password
         - name: MYSQL_USER
           value: {{ default "" .Values.mysqlUser | quote }}
         - name: ALLOW_ROOT_FROM
           value: {{ .Values.allowRootFrom | quote }}
         - name: CLUSTER_NAME
-          value: {{ template "percona-xtradb-cluster.fullname" . }}
+          value: {{ include "percona-xtradb-cluster.fullname" . }}
         - name: SHORT_CLUSTER_NAME
-          value: {{ template "percona-xtradb-cluster.shortname" . }}
+          value: {{ include "percona-xtradb-cluster.shortname" . }}
         - name: K8S_SERVICE_NAME
-          value: {{ template "percona-xtradb-cluster.fullname" . }}-repl
+          value: {{ include "percona-xtradb-cluster.fullname" . }}-repl
         - name: PXC_STRICT_MODE
           value: {{ default "ENFORCING" .Values.pxc_strict_mode | quote }}
         - name: DEBUG
@@ -163,10 +163,10 @@ spec:
         emptyDir: {}
       - name: mysql-config-files
         configMap:
-          name: {{ template "percona-xtradb-cluster.fullname" . }}-config-files
+          name: {{ include "percona-xtradb-cluster.fullname" . }}-config-files
       - name: mysql-startup-scripts
         configMap:
-          name: {{ template "percona-xtradb-cluster.fullname" . }}-startup-scripts
+          name: {{ include "percona-xtradb-cluster.fullname" . }}-startup-scripts
       {{- if not .Values.persistence.enabled }}
       - name: mysql-data
         emptyDir: {}
