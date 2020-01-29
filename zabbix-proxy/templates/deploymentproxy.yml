@@ -21,7 +21,7 @@ spec:
           - containerPort: 10050
             name: server
           - containerPort: 10051
-            name: server
+            name: server1
           env:
           - name: ZBX_HOSTNAME
             value: "{{ .Release.Name }}"
