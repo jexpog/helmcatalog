@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: DB_SERVER_HOST
-            value: zabbix-db
+            value: database
           - name: MYSQL_USER
             value: "root"
           - name: MYSQL_PASSWORD

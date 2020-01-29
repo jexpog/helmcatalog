@@ -116,3 +116,9 @@ configFiles:
     wsrep_provider=/usr/lib/galera3/libgalera_smm.so
     wsrep_cluster_name=galera
     wsrep_sst_method=xtrabackup-v2
+
+## Set the percona kubernetes service headless (no load-balancing)
+## ref: https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
+service:
+  percona:
+    headless: false    
