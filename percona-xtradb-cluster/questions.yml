@@ -32,6 +32,21 @@ questions:
   type: string
   label: Acces for root Ip range
   group: Percona Configure Values
+- variable: mysqrootpass
+  default: ""
+  type: string
+  label: Mysql root pass
+  group: Percona Configure Values
+- variable: mysqlUser
+  default: ""
+  type: string
+  label: Msql user User
+  group: Percona Configure Values
+- variable: mysqpass
+  default: ""
+  type: string
+  label: Msql user pass
+  group: Percona Configure Values    
 - variable: persistence.enabled
   default: false
   description: "Persistent storage for cluster percona"

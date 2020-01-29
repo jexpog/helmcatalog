@@ -2,6 +2,9 @@ image.repository: "percona/percona-xtradb-cluster"
 image.tag: "5.7.19"
 image.pullPolicy: IfNotPresent
 replicas: 2
+mysqpass: "zabbix"
+mysqrootpass: "zabbix"
+mysqlUser: "zabbix"
 mysqlRootPassword: test
 allowRootFrom: "%"
 persistence.enabled: false

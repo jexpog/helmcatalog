@@ -36,7 +36,9 @@ replicas: 3
 ## hosts to allow root user access from
 # set to "127.0.0.1" to deny remote root.
 allowRootFrom: "%"
-
+mysqpass: "zabbix"
+mysqrootpass: "zabbix"
+mysqlUser: "zabbix"
 ## Persist data to a persistent volume
 persistence:
   enabled: true
