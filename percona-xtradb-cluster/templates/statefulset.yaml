@@ -63,7 +63,7 @@ spec:
         - name: MYSQL_USER
           value: {{ default "" .Values.mysqlUser | quote }}
         - name: MYSQL_DATABASE
-          value: {{ default "" .Values.mysqlDatabase | quote }}
+          value: {{ default "zabbix" .Values.mysqlDatabase | quote }}
         - name: ALLOW_ROOT_FROM
           value: {{ .Values.allowRootFrom | quote }}
         - name: CLUSTER_NAME
