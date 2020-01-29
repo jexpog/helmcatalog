@@ -23,6 +23,8 @@ spec:
           env:
           - name: DB_SERVER_HOST
             value: zabbix-db
+          - name: MYSQL_DATABASE
+            value: zabbix_proxy
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
