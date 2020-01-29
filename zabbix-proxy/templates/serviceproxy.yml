@@ -7,11 +7,11 @@ metadata:
     tier: proxy
 spec:
   ports:
-    - port: 10051
-      targetPort: 10051
-      name: zabbix-proxy
-    - port: 10050
-      targetPort: 10050
-      name: zabbix-proxy1
+  - port: 10051
+    targetPort: 10051
+    name: zabbix-proxy
+  - port: 10050
+    targetPort: 10050
+    name: zabbix-proxy1
   selector:
     name: zabbix-proxy  

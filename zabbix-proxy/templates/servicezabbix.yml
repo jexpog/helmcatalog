@@ -7,11 +7,11 @@ metadata:
     tier: server
 spec:
   ports:
-    - port: 10051
-      targetPort: 10051
-      name: zabbix-server
-    - port: 10050
-      targetPort: 10050
-      name: zabbix-server1
+  - port: 10051
+    targetPort: 10051
+    name: zabbix-server
+  - port: 10050
+    targetPort: 10050
+    name: zabbix-server1
   selector:
     name: zabbix-server  
