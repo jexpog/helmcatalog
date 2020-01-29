@@ -18,6 +18,8 @@ spec:
         - name: zabbix-server
           image: zabbix/zabbix-server-mysql:ubuntu-4.0.16
           ports:
+          - containerPort: 10050
+            name: server
           - containerPort: 10051
             name: server
           env:
