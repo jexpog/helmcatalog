@@ -119,10 +119,10 @@ spec:
         emptyDir: {}
       - name: mysql-config-files
         configMap:
-          name: {{ include "percona-xtradb-cluster.fullname" . }}-config-files
+          name: {{ include "zabbix.fullname" . }}-config-files
       - name: mysql-startup-scripts
         configMap:
-          name: {{ include "percona-xtradb-cluster.fullname" . }}-startup-scripts
+          name: {{ include "zabbix.fullname" . }}-startup-scripts
       {{- if not .Values.persistence.enabled }}
       - name: mysql-data
         emptyDir: {}
