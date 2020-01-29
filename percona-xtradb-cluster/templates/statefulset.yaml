@@ -46,15 +46,12 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
         - name: MYSQL_ROOT_PASSWORD
           value: value: {{ default "" .Values.mysqrootpass | quote }}
         - name: MYSQL_PASSWORD
           value: {{ default "" .Values.mysqpass | quote }}
-        - name: XTRABACKUP_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "percona-xtradb-cluster.fullname" . }}
-              key: xtrabackup-password
         - name: MYSQL_USER
           value: {{ default "" .Values.mysqlUser | quote }}
         - name: MYSQL_DATABASE
