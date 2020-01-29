@@ -12,6 +12,6 @@ spec:
       name: zabbix-server
     - port: 10050
       targetPort: 10050
-      name: zabbix-server
+      name: zabbix-server1
   selector:
     name: zabbix-server  
