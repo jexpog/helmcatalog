@@ -56,7 +56,7 @@ spec:
         - name: CLUSTER_NAME
           value: {{ include "zabbix.fullname" . }}
         - name: SHORT_CLUSTER_NAME
-          value: {{ include "zabbix.shortname" . }}
+          value: {{ include "zabbix.fullname" . }}-cl
         - name: K8S_SERVICE_NAME
           value: {{ include "zabbix.fullname" . }}-repl
         - name: PXC_STRICT_MODE
