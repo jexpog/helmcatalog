@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: zabbix-proxy
-          image: zabbix/zabbix-proxy-mysql:ubuntu-4.0.16
+          image: zabbix/zabbix-proxy-sqlite3:ubuntu-4.0.16
           ports:
           - containerPort: 10051
             name: server
@@ -25,8 +25,8 @@ spec:
             value: "{{ .Release.Name }}"
           - name: ZBX_SERVER_HOST
             value: zabbix-server
-          - name: DB_SERVER_HOST
-            value: zabbix-db
+#          - name: DB_SERVER_HOST
+#            value: zabbix-db
           - name: MYSQL_ROOT_PASSWORD
             value: zabbix
           - name: MYSQL_USER
