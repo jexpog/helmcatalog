@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "percona-xtradb-cluster.fullname" . }}
+  name: {{ include "zabbix.fullname" . }}
   labels:
-    app: {{ include "percona-xtradb-cluster.fullname" . }}
+    app: {{ include "zabbix.fullname" . }}
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ include "percona-xtradb-cluster.fullname" . }}
+      app: {{ include "zabiix.fullname" . }}
       release: "{{ .Release.Name }}"
-  serviceName: {{ include "percona-xtradb-cluster.fullname" . }}
+  serviceName: {{ include "zabbix.fullname" . }}
   template:
     metadata:
       labels:
-        app: {{ include "percona-xtradb-cluster.fullname" . }}
+        app: {{ include "zabbix.fullname" . }}
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
@@ -58,18 +58,18 @@ spec:
         - name: XTRABACKUP_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "percona-xtradb-cluster.fullname" . }}
+              name: {{ include "zabbix.fullname" . }}
               key: xtrabackup-password
         - name: MYSQL_USER
           value: {{ default "" .Values.mysqlUser | quote }}
         - name: ALLOW_ROOT_FROM
           value: {{ .Values.allowRootFrom | quote }}
         - name: CLUSTER_NAME
-          value: {{ include "percona-xtradb-cluster.fullname" . }}
+          value: {{ include "zabbix.fullname" . }}
         - name: SHORT_CLUSTER_NAME
-          value: {{ include "percona-xtradb-cluster.shortname" . }}
+          value: {{ include "zabbix.shortname" . }}
         - name: K8S_SERVICE_NAME
-          value: {{ include "percona-xtradb-cluster.fullname" . }}-repl
+          value: {{ include "zabbix.fullname" . }}-repl
         - name: PXC_STRICT_MODE
           value: {{ default "ENFORCING" .Values.pxc_strict_mode | quote }}
         - name: DEBUG

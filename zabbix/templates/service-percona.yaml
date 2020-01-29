@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "percona-xtradb-cluster.fullname" . }}
+  name: {{ include "zabbix.fullname" . }}
   labels:
-    app: {{ include "percona-xtradb-cluster.fullname" . }}
+    app: {{ include "zabbix.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
@@ -16,5 +16,5 @@ spec:
     port: 3306
     targetPort: mysql
   selector:
-    app: {{ include "percona-xtradb-cluster.fullname" . }}
+    app: {{ include "zabbix.fullname" . }}
     release: "{{ .Release.Name }}"
