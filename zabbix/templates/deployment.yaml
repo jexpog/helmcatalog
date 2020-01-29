@@ -31,9 +31,9 @@ spec:
           - name: DB_SERVER_HOST
             value: "10.86.11.123"
           - name: MYSQL_USER
-            value: zabbix
+            value: "root"
           - name: MYSQL_PASSWORD
-            value: zabbix
+            value: "zabbix"
           - name: ZBX_SERVER_HOST
             value: zabbix-server
           ports:

@@ -23,7 +23,9 @@ spec:
           env:
           - name: DB_SERVER_HOST
             value: "10.86.11.123"
+          - name: MYSQL_DATABASE
+            value: "zabbix"
           - name: MYSQL_USER
-            value: zabbix
+            value: "root"
           - name: MYSQL_PASSWORD
-            value: zabbix     
+            value: "zabbix"     
