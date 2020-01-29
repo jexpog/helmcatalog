@@ -24,7 +24,7 @@ spec:
           - name: MYSQL_ROOT_PASSWORD
             value: zabbix
           - name: MYSQL_DATABASE
-            value: zabbix
+            value: zabbix-proxy
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD

@@ -22,8 +22,6 @@ spec:
             value: zabbix-server
           - name: DB_SERVER_HOST
             value: zabbix-db
-          - name: MYSQL_DATABASE
-            value: zabbix
           - name: MYSQL_USER
             value: zabbix
           - name: MYSQL_PASSWORD
