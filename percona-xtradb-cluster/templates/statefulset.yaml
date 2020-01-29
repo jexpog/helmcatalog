@@ -51,15 +51,9 @@ spec:
           value: "true"
         {{- else }}
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "percona-xtradb-cluster.fullname" . }}
-              key: mysql-root-password
+          value: {{ default "zabbix" .Values.mysqrootpass | quote }}
         - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "percona-xtradb-cluster.fullname" . }}
-              key: mysql-password
+          value: {{ default "zabbix" .Values.mysqpass | quote }}
         {{- end }}
         - name: XTRABACKUP_PASSWORD
           valueFrom:
