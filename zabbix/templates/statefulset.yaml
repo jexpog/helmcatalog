@@ -112,39 +112,6 @@ spec:
         - name: var-log
           mountPath: /var/log
       {{ end }}
-      {{ if .Values.metricsExporter.enabled }}
-      - name: metrics
-        {{- if .Values.metricsExporter.tag }}
-        image: prom/mysqld-exporter:{{ .Values.metricsExporter.tag }}
-        {{- else }}
-        image: prom/mysqld-exporter
-        {{- end }}
-        imagePullPolicy: IfNotPresent
-{{- if .Values.metricsExporter.commandOverrides }}
-        command:
-{{ toYaml .Values.metricsExporter.commandOverrides | indent 8 }}
-{{- end }}
-{{- if .Values.metricsExporter.argsOverrides }}
-        args:
-{{ toYaml .Values.metricsExporter.argsOverrides | indent 8 }}
-{{- end }}
-        ports:
-        - name: metrics
-          containerPort: 9104
-        volumeMounts:
-        - name: slash-root
-          mountPath: /root
-        livenessProbe:
-          exec:
-            command: ["wget","-q","-O","-","localhost:9104"]
-          initialDelaySeconds: 30
-          timeoutSeconds: 2
-        readinessProbe:
-          exec:
-            command: ["wget","-q","-O","-","localhost:9104"]
-          initialDelaySeconds: 30
-          timeoutSeconds: 2
-      {{ end }}
       volumes:
       - name: slash-root
         emptyDir: {}
