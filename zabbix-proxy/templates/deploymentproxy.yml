@@ -26,3 +26,6 @@ spec:
             value: zabbix
           - name: MYSQL_PASSWORD
             value: zabbix
+          requests:
+            cpu: 4
+            memory: 8Gi
