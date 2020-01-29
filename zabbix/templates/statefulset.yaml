@@ -3,27 +3,16 @@ kind: StatefulSet
 metadata:
   name: {{ include "zabbix.fullname" . }}
   labels:
-    app: {{ include "zabbix.fullname" . }}
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+    {{- include "zabbix.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "zabiix.fullname" . }}
-      release: "{{ .Release.Name }}"
-  serviceName: {{ include "zabbix.fullname" . }}
+      {{- include "zabbix.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ include "zabbix.fullname" . }}
-        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-        release: "{{ .Release.Name }}"
-        heritage: "{{ .Release.Service }}"
-    {{- if .Values.podAnnotations }}
-      annotations:
-{{ toYaml .Values.podAnnotations | indent 8 }}
-    {{- end }}
+        {{- include "zabbix.selectorLabels" . | nindent 8 }}
     spec:
       initContainers:
       - name: "remove-lost-found"
