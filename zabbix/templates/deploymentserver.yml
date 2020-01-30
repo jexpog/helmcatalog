@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: zabbix-server
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "zabbix/zabbix-server-mysql:{{ .Values.image.tag }}"
           ports:
           - containerPort: 10051
             name: server
@@ -26,4 +26,13 @@ spec:
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD
-            value: "zabbix"     
+            value: "zabbix"
+        - name: zabbix-agent
+          image: "zabbix/zabbix-agent:{{ .Values.image.tag }}"
+          ports:
+          - containerPort: 10050
+            name: agent
+          env:
+          - name: ZBX_SERVER_HOST
+            value: zabbix-server  
+

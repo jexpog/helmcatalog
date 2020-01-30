@@ -101,12 +101,10 @@ spec:
           value: "zabbix"
         - name: MYSQL_REPLICATION_PASSWORD
           value: "zabbix"
-        {{ if .Values.mysqlha.mysqlUser }}
         - name: MYSQL_USER
           value: "zabbix"
         - name: MYSQL_PASSWORD
           value: "zabbix"
-        {{ end }}
         ports:
         - name: mysql
           containerPort: 3306
