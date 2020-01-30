@@ -10,5 +10,11 @@ spec:
     - port: 10051
       targetPort: 10051
       name: zabbix-server
+    - port: 10050
+      targetPort: 10050
+      name: zabbix-server0
+  externalIPs:
+    - {{ .Values.externalIP }}
   selector:
-    name: zabbix-server  
+    name: zabbix-server
+  type: LoadBalancer  

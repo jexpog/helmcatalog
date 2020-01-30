@@ -9,9 +9,14 @@ image:
   tag: centos-4.0.0
   pullPolicy: IfNotPresent
 
+## resouces
+memory: 4
+cpu: 400
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+externalIP: "0.0.0.0.0"
 
 serviceAccount:
   # Specifies whether a service account should be created

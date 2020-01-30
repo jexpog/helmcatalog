@@ -14,10 +14,27 @@ questions:
     description: "Zabbix image tag"
     type: string
     label: Zabbix Image Tag
+########config resources#######
+- variable: memory
+  default: "4"
+  type: string
+  description: "Memory in Unit Gi"
+  group: "Resources Settings"
+- variable: cpu
+  default: "400"
+  type: string
+  description: "Cpu in Unit Gi"
+  group: "Resources Settings"
 #######config parameters#######
 - variable: serverdb
   default: "" 
   decription: "Define Server DB"
   type: string
   label: "Define Database Host"
-  group: "Settings Mysql Server"
+  group: "Settings"
+- variable: externalIP
+  default: "0.0.0.0" 
+  decription: "Define External IP for proxy"
+  type: string
+  label: "Define External Ip proxy Acces"
+  group: "Settings"  

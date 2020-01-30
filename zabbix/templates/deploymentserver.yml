@@ -20,6 +20,8 @@ spec:
           ports:
           - containerPort: 10051
             name: server
+          - containerPort: 10050
+            name: server1  
           env:
           - name: DB_SERVER_HOST
             value: {{ .Values.serverdb }}
@@ -36,5 +38,9 @@ spec:
           - name: ZBX_SERVER_HOST
             value: zabbix-server
           - name: ZBX_HOSTNAME
-            value: zabbix-server   
+            value: zabbix-server
+          resources:
+            requests:
+              memory: {{ .Values.memory }}Gi
+              cpu: {{ .Values.cpu }}m
 
