@@ -23,7 +23,7 @@ questions:
 - variable: cpu
   default: "400"
   type: string
-  description: "Cpu 1 core = 100"
+  description: "Cpu core"
   group: "Resources Settings"
 #######config parameters#######
 - variable: serverdb
