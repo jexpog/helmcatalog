@@ -16,5 +16,4 @@ spec:
   externalIPs:
     - {{ .Values.externalIP }}
   selector:
-    name: zabbix-server
-  type: LoadBalancer  
+    name: zabbix-server 
