@@ -23,7 +23,7 @@ questions:
 - variable: cpu
   default: "400"
   type: string
-  description: "Cpu in Unit Gi"
+  description: "Cpu 1 core = 100"
   group: "Resources Settings"
 #######config parameters#######
 - variable: serverdb
@@ -34,7 +34,7 @@ questions:
   group: "Settings"
 - variable: externalIP
   default: "0.0.0.0" 
-  decription: "Define External IP for proxy"
+  decription: "External IP for proxy"
   type: string
-  label: "Define External Ip proxy Acces"
+  label: "External Ip proxy Acces"
   group: "Settings"  
