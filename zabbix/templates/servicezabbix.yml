@@ -6,7 +6,6 @@ metadata:
     app: zabbix
     tier: server
 spec:
-  type: NodePort
   ports:
     - port: 10051
       targetPort: 10051
