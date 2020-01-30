@@ -1,5 +1,4 @@
 image.registry: docker.io
-image.repository: zabbix/zabbix-server-mysql
 image.tag: ubuntu-4.0.16
 imagepullPolicy: IfNotPresent
 serverdb: "localhost"
