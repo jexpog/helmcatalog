@@ -42,5 +42,5 @@ spec:
           resources:
             requests:
               memory: {{ .Values.memory }}Gi
-              cpu: {{ .Values.cpu }}m
+              cpu: {{ .Values.cpu }}
 
