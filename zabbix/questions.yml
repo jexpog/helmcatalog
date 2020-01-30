@@ -1,0 +1,28 @@
+labels:
+  io.cattle.role: cluster
+questions:
+- variable: defaultImage
+  default: true
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "bitnami/phpmyadmin"
+    description: "Zabbix Cluster image name"
+    type: string
+    label: Zabbix Image Name
+  - variable: image.tag
+    default: "4.9.3-debian-9-r0"
+    description: "Zabbix image tag"
+    type: string
+    label: Zabbix Image Tag
+#######config parameters#######
+- variable: serverdb
+  default: "" 
+  decription: "Define Server DB"
+  type: string
+  label: "Define Database Host"
+  group: "Settings Mysql Server"

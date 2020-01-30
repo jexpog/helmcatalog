@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: zabbix-server
-          image: zabbix/zabbix-server-mysql:ubuntu-4.0.16
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
           - containerPort: 10051
             name: server
           env:
           - name: DB_SERVER_HOST
-            value: "10.43.77.232"
+            value: {{ .Values.serverdb }}
           - name: MYSQL_USER
             value: "root"
           - name: MYSQL_PASSWORD

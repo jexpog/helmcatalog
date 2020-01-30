@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: zabbix/zabbix-server-mysql
+  tag: ubuntu-4.0.16
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -29,7 +30,8 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
+##server database IP o ho
+serverdb: "localhost"
 service:
   type: ClusterIP
   port: 80
