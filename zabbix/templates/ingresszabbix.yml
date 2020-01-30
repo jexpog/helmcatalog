@@ -11,3 +11,4 @@ spec:
           serviceName: {{ template "zabbix.fullname" . }}
           servicePort: 80
         path: /
+        
