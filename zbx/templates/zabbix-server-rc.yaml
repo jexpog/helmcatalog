@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: {{ include "zb-k8s.fullname" . }}-zabbix-server
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    tier: server
+    environment: dev
+  namespace: zabbix
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: {{ include "zb-k8s.fullname" . }}-zabbix-server
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    spec:
+      containers:
+        - name: {{ include "zb-k8s.fullname" . }}-zabbix-server
+          image: "zabbix/zabbix-server-mysql:{{ .Values.image.tagzb }}"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 10051
+            protocol: TCP
+            name: {{ include "zb-k8s.fullname" . }}-zabbix-trapper
+          readinessProbe:
+            tcpSocket:
+              port: {{ include "zb-k8s.fullname" . }}-zabbix-trapper
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ include "zb-k8s.fullname" . }}-zabbix-trapper
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          env:
+          - name: DB_SERVER_HOST
+            value: {{ .Values.dbHost }}
+          - name: MYSQL_USER
+            valueFrom:
+             secretKeyRef:
+              name: {{ include "zb-k8s.fullname" . }}-db-secret
+              key: db-zbx-user
+          - name: MYSQL_PASSWORD
+            valueFrom:
+             secretKeyRef:
+              name: {{ include "zb-k8s.fullname" . }}-db-secret
+              key: db-zbx-pass
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+             secretKeyRef:
+              name: {{ include "zb-k8s.fullname" . }}-db-secret
+              key: db-root-pass
+          - name: MYSQL_DATABASE
+            value: "zabbix"
+          - name: ZBX_JAVAGATEWAY_ENABLE
+            value: "true"
+          - name: ZBX_STARTJAVAPOLLERS
+            value: "5"
+          - name: ZBX_ENABLE_SNMP_TRAPS
+            value: "true"
+          - name: ZBX_STARTPROXYPOLLERS
+            value: "5"
+          - name: ZBX_PROXYCONFIGFREQUENCY
+            value: "60"
+          volumeMounts:
+          - name: {{ include "zb-k8s.fullname" . }}-zabbix-db-storage
+            mountPath: /var/lib/zabbix/snmptraps/
+            readOnly: true
+        - name: {{ include "zb-k8s.fullname" . }}-zabbix-snmptraps
+          image: zabbix/zabbix-snmptraps:ubuntu-3.4-latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 162
+            protocol: UDP
+            name: {{ include "zb-k8s.fullname" . }}-snmp-trap
+          volumeMounts:
+          - name: {{ include "zb-k8s.fullname" . }}-zabbix-db-storage
+            mountPath: /var/lib/zabbix/snmptraps/
+            readOnly: false
+      volumes:
+       - hostPath:
+          path: /zabbix/
+         name: {{ include "zb-k8s.fullname" . }}-zabbix-db-storage

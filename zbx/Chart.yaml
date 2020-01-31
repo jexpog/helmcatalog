@@ -1,6 +1,7 @@
 apiVersion: v2
 name: zbx
 description: A Helm chart for Kubernetes
+icon: https://miro.medium.com/max/1600/1*clU7swMwpx_-jFxwExcCOg.png
 
 # A chart can be either an 'application' or a 'library' chart.
 #
