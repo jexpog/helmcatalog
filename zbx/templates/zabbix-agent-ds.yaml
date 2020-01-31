@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: {{ include "zbx.fullname" . }}-agent
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    tier: agent
+spec:
+  updateStrategy:
+   type: RollingUpdate
+   rollingUpdate:
+    maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: {{ include "zbx.fullname" . }}-agent
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    spec:
+      containers:
+        - name: {{ include "zbx.fullname" . }}-agent
+          image: "zabbix/zabbix-agent:{{ .Values.tagzb }}"
+          imagePullPolicy: Always
+          resources:
+           limits:
+            cpu: 100m
+            memory: 54Mi
+           requests:
+            cpu: 100m
+            memory: 54Mi
+          ports:
+          - containerPort: 10050
+            name: {{ include "zbx.fullname" . }}-agent
+          env:
+          - name: ZBX_SERVER_HOST
+            value: "zbx-server"
+          - name: ZBX_PASSIVE_ALLOW
+            value: "true"
+          - name: ZBX_STARTAGENTS
+            value: "3"
+          - name: ZBX_TIMEOUT
+            value: "10"
+          securityContext:
+            privileged: true
