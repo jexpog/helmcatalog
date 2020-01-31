@@ -1,7 +1,0 @@
-image.registry: docker.io
-image.tag: centos-4.0.0
-imagepullPolicy: IfNotPresent
-serverdb: "localhost"
-memory: "4"
-cpu: "400"
-externalIP: "0.0.0.0"
