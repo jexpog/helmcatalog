@@ -37,20 +37,11 @@ spec:
           - name: DB_SERVER_HOST
             value: {{ .Values.dbHost }}
           - name: MYSQL_USER
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: db-zbx-user
+            value: "zabbix"
           - name: MYSQL_PASSWORD
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: db-zbx-pass
+            value: "zabbix"
           - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: db-root-pass
+            value: "zabbix"
           - name: MYSQL_DATABASE
             value: "zabbix"
           - name: ZBX_JAVAGATEWAY_ENABLE
