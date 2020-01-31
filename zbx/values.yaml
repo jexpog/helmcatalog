@@ -9,6 +9,9 @@ image:
   pullPolicy: IfNotPresent
   tagzb: "centos-4.0.0"
 dbHost: "10.10.10.10"
+Web:
+  ExternalIP: "10.86.11.121"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
