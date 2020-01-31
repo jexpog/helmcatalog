@@ -34,6 +34,8 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
           env:
+          - name: DB_SERVER_HOST
+            value: {{ .Values.serverdb }}
           - name: MYSQL_USER
             valueFrom:
              secretKeyRef:
