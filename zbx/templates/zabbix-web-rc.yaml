@@ -22,7 +22,7 @@ spec:
             name: {{ include "zbx.fullname" . }}-web-http
           env:
           - name: DB_SERVER_HOST
-            value: "10.110.27.111"
+            value: {{ .Values.serverdb }}
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD
