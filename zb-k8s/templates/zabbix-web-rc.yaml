@@ -22,13 +22,6 @@ spec:
             name: {{ include "zb-k8s.fullname" . }}-web-http
           - containerPort: 443
             name: {{ include "zb-k8s.fullname" . }}-web-https
-          resources:
-           limits:
-            cpu: 200m
-            memory: 400Mi
-           requests:
-            cpu: 200m
-            memory: 400Mi
           livenessProbe:
             httpGet:
               path: /
