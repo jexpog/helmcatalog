@@ -23,10 +23,6 @@ spec:
           env:
           - name: DB_SERVER_HOST
             value: {{ .Values.serverdb }}
-          - name: ZBX_SERVER_NAME
-            value: "Zabbix kubernetes"
-          - name: PHP_TZ
-            value: "Europe/Madrid"
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD
