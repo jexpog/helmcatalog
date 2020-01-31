@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           ports:
           - containerPort: 80
-            name: {{ include "zbx.fullname" . }}-web-http
+            name: {{ include "zbx.fullname" . }}-web
           env:
           - name: DB_SERVER_HOST
             value: {{ .Values.serverdb }}
