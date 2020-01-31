@@ -28,7 +28,7 @@ spec:
             name: zabbix-agent
           env:
           - name: ZBX_SERVER_HOST
-            value: "zabbix-server"
+            value: {{ .Values.externalIP }}
           - name: ZBX_PASSIVE_ALLOW
             value: "true"
           - name: ZBX_STARTAGENTS
