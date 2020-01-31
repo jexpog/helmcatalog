@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zb-k8s.fullname" . }}-zabbix-server
-          image: zabbix/zabbix-server-mysql:alpine-3.4-latest
+          image: "zabbix/zabbix-server-mysql:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 10051

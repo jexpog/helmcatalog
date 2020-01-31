@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zb-k8s.fullname" . }}-zabbix-agent
-          image: zabbix/zabbix-agent:alpine-3.4-latest
+          image: "zabbix/zabbix-agent:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           resources:
            limits:

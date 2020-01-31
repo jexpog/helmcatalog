@@ -9,7 +9,7 @@ questions:
   show_subquestion_if: false
   group: "Container Images"
   subquestions:
-  - variable: image.tag
+  - variable: image.tagzb
     default: "centos-4.0.0"
     description: "Zabbix image tag"
     type: string

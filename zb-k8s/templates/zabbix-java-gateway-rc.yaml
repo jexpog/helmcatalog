@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zb-k8s.fullname" . }}-zabbix-java-gateway
-          image: zabbix/zabbix-java-gateway:alpine-3.4-latest
+          image: "zabbix/zabbix-java-gateway:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 10052

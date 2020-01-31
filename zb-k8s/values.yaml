@@ -8,6 +8,7 @@ image:
   repository: nginx
   tag: stable
   pullPolicy: IfNotPresent
+  tagzb: "centos-4.0.0"
 
 nameOverride: ""
 fullnameOverride: ""
