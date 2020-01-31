@@ -16,4 +16,4 @@ spec:
   selector:
     name: {{ include "zabbix.fullname" . }}-zabbix-server
   externalIPs:
-  - "{{ .Values.ExternalIP }}"
+  - "{{ .Values.externalIP }}"
