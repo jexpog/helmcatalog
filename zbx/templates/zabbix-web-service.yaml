@@ -12,5 +12,3 @@ spec:
     name: {{ include "zbx.fullname" . }}-web-http
   selector:
     name: {{ include "zbx.fullname" . }}-web
-  externalIPs:
-  - "{{ .Values.Web.ExternalIP }}"
