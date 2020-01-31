@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: {{ include "zabbix.fullname" . }}-zabbix-agent
+  name: zabbix-agent
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     tier: agent
 spec:
   selector:
       matchLabels:
-        name: {{ include "zabbix.fullname" . }}-zabbix-agent
+        name: zabbix-agent
   updateStrategy:
    type: RollingUpdate
    rollingUpdate:
@@ -20,12 +20,12 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       containers:
-        - name: {{ include "zabbix.fullname" . }}-zabbix-agent
+        - name: zabbix-agent
           image: "zabbix/zabbix-agent:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 10050
-            name: {{ include "zabbix.fullname" . }}-zabbix-agent
+            name: zabbix-agent
           env:
           - name: ZBX_SERVER_HOST
             value: "zabbix-server"
