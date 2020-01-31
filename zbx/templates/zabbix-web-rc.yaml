@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zbx.fullname" . }}-zabbix-web
-          image: "zabbix/zabbix-web-nginx-mysql:{{ .Values.image.tagzb }}"
+          image: "zabbix/zabbix-web-apache-mysql:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 80
@@ -57,11 +57,3 @@ spec:
             value: "zabbix"
           - name: MYSQL_DATABASE
             value: "zabbix"
-          volumeMounts:
-          - name: {{ include "zbx.fullname" . }}-zabbix-web-ssl
-            mountPath: /etc/ssl/nginx
-            readOnly: true
-      volumes:
-       - hostPath:
-          path: /home/dotneft/zbx/zbx_env/etc/ssl/nginx/
-         name: {{ include "zbx.fullname" . }}-zabbix-web-ssl
