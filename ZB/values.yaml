@@ -16,8 +16,7 @@ service:
   type: ClusterIP
   port: 80
 Web:
-  ExternalIP: "10.86.11.121"
-serverdb: "0.0.0.0"  
+  ExternalIP: 10.86.11.121
 ingress:
   enabled: false
   annotations: {}
