@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zabbix-server
+  labels:
+    app: zabbix
+    tier: zabbix-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: zabbix-server
+        app: zabbix
+        tier: zabbix-server
+    spec:
+      containers:
+        - name: zabbix-server
+          image: "zabbix/zabbix-server-mysql:{{ .Values.image.tag }}"
+          ports:
+          - containerPort: 10051
+            protocol: TCP
+            name: {{ include "zabbix.fullname" . }}-zabbix-trapper
+          readinessProbe:
+            tcpSocket:
+              port: {{ include "zabbix.fullname" . }}-zabbix-trapper
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ include "zabbix.fullname" . }}-zabbix-trapper
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          env:
+          - name: DB_SERVER_HOST
+            value: {{ .Values.serverdb }}
+          - name: MYSQL_USER
+            value: "zabbix"
+          - name: MYSQL_PASSWORD
+            value: "zabbix"
+          resources:
+            requests:
+              memory: {{ .Values.memory }}Gi
+              cpu: {{ .Values.cpu }}  
+        - name: {{ include "zabbix.fullname" . }}-zabbix-snmptraps
+          image: "zabbix/zabbix-snmptraps:{{ .Values.image.tag }}"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 162
+            protocol: UDP
+            name: {{ include "zabbix.fullname" . }}-snmp-trap
