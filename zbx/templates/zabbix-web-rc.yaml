@@ -27,5 +27,3 @@ spec:
             value: "zabbix"
           - name: MYSQL_PASSWORD
             value: "zabbix"
-          - name: ZBX_SERVER_HOST
-            value: "zbx-server"
