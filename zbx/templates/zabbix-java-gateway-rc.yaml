@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: {{ include "zbx.fullname" . }}-jv-gt
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    tier: java
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: {{ include "zbx.fullname" . }}-jv-gt
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    spec:
+      containers:
+        - name: {{ include "zbx.fullname" . }}-jv-gt
+          image: "zabbix/zabbix-java-gateway:{{ .Values.image.tagzb }}"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 10052
+            protocol: TCP
+            name: {{ include "zbx.fullname" . }}-jmx
+          env:
+          - name: ZBX_TIMEOUT
+            value: "5"
