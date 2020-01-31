@@ -20,15 +20,15 @@ spec:
           ports:
           - containerPort: 10051
             protocol: TCP
-            name: {{ include "zabbix.fullname" . }}-zabbix-trapper
+            name: zabbix-trapper
           readinessProbe:
             tcpSocket:
-              port: {{ include "zabbix.fullname" . }}-zabbix-trapper
+              port: zabbix-trapper
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: {{ include "zabbix.fullname" . }}-zabbix-trapper
+              port: zabbix-trapper
             initialDelaySeconds: 15
             periodSeconds: 20
           env:
@@ -48,4 +48,4 @@ spec:
           ports:
           - containerPort: 162
             protocol: UDP
-            name: {{ include "zabbix.fullname" . }}-snmp-trap
+            name: snmp-trap
