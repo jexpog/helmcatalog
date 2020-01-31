@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "zbx.fullname" . }}-web
+  name: {{ include "zbx.fullname" . }}
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    name: {{ include "zbx.fullname" . }}-web
+    {{- include "zbx.labels" . | nindent 4 }}
 spec:
+  type: {{ .Values.service.type }}
   ports:
-  - port: 80
-    targetPort: 80
-    name: {{ include "zbx.fullname" . }}-web-http
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
-    name: {{ include "zbx.fullname" . }}-web
+    name: {{ include "zbx.fullname" . }}-web    
