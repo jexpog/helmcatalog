@@ -10,9 +10,6 @@ spec:
   - port: 80
     targetPort: 80
     name: {{ include "zbx.fullname" . }}-web-http
-  - port: 443
-    targetPort: 443
-    name: {{ include "zbx.fullname" . }}-web-https
   selector:
     name: {{ include "zbx.fullname" . }}-web
   externalIPs:

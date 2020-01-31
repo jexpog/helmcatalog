@@ -20,28 +20,6 @@ spec:
           ports:
           - containerPort: 80
             name: {{ include "zbx.fullname" . }}-web-http
-          - containerPort: 443
-            name: {{ include "zbx.fullname" . }}-web-https
-          livenessProbe:
-            httpGet:
-              path: /
-              port: {{ include "zbx.fullname" . }}-web-http
-              scheme: HTTP
-            initialDelaySeconds: 15
-            timeoutSeconds: 2
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 5
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ include "zbx.fullname" . }}-web-http
-              scheme: HTTP
-            initialDelaySeconds: 15
-            timeoutSeconds: 2
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 5
           env:
           - name: DB_SERVER_HOST
             value: {{ .Values.serverdb }}
