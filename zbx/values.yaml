@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: nginx
   pullPolicy: IfNotPresent
-  tagzb: "centos-4.0.17"
+  tagzb: "centos-3.4.17"
 Web:
   ExternalIP: "10.86.11.121"
 
