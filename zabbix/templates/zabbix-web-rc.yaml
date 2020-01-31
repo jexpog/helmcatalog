@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zabbix.fullname" . }}-web
-          image: "zabbix/zabbix-web-apache-mysql:{{ .Values.image.tagzb }}"
+          image: "zabbix/zabbix-web-apache-mysql:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 80
