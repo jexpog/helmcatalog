@@ -13,6 +13,11 @@ spec:
    type: RollingUpdate
    rollingUpdate:
     maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: zabbix-agent
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       containers:
         - name: {{ include "zabbix.fullname" . }}-zabbix-agent
