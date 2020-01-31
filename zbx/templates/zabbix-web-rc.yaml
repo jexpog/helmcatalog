@@ -43,25 +43,18 @@ spec:
             successThreshold: 1
             failureThreshold: 5
           env:
+          - name: DB_SERVER_HOST
+            value: {{ .Values.serverdb }}
           - name: ZBX_SERVER_NAME
             value: "Zabbix kubernetes"
           - name: PHP_TZ
-            value: "Europe/Riga"
+            value: "Europe/Madrid"
           - name: MYSQL_USER
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: {{ include "zbx.fullname" . }}-db-zbx-user
+            value: "zabbix"
           - name: MYSQL_PASSWORD
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: {{ include "zbx.fullname" . }}-db-zbx-pass
+            value: "zabbix"
           - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-             secretKeyRef:
-              name: {{ include "zbx.fullname" . }}-db-secret
-              key: {{ include "zbx.fullname" . }}-db-root-pass
+            value: "zabbix"
           - name: MYSQL_DATABASE
             value: "zabbix"
           volumeMounts:

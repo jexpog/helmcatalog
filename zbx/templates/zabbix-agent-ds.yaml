@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zbx.fullname" . }}-agent
-          image: "zabbix/zabbix-agent:{{ .Values.tagzb }}"
+          image: "zabbix/zabbix-agent:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           resources:
            limits:

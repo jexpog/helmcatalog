@@ -12,6 +12,7 @@ dbHost: "10.10.10.10"
 Web:
   ExternalIP: "10.86.11.121"
 
+serverdb: "10.10.10.10"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
