@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: {{ include "zb-k8s.fullname" . }}-zabbix-web
+  name: {{ include "zbx.fullname" . }}-zabbix-web
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     tier: zabbix-web
@@ -10,22 +10,22 @@ spec:
   template:
     metadata:
       labels:
-        name: {{ include "zb-k8s.fullname" . }}-zabbix-web
+        name: {{ include "zbx.fullname" . }}-zabbix-web
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       containers:
-        - name: {{ include "zb-k8s.fullname" . }}-zabbix-web
+        - name: {{ include "zbx.fullname" . }}-zabbix-web
           image: "zabbix/zabbix-web-nginx-mysql:{{ .Values.image.tagzb }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 80
-            name: {{ include "zb-k8s.fullname" . }}-web-http
+            name: {{ include "zbx.fullname" . }}-web-http
           - containerPort: 443
-            name: {{ include "zb-k8s.fullname" . }}-web-https
+            name: {{ include "zbx.fullname" . }}-web-https
           livenessProbe:
             httpGet:
               path: /
-              port: {{ include "zb-k8s.fullname" . }}-web-http
+              port: {{ include "zbx.fullname" . }}-web-http
               scheme: HTTP
             initialDelaySeconds: 15
             timeoutSeconds: 2
@@ -35,7 +35,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: {{ include "zb-k8s.fullname" . }}-web-http
+              port: {{ include "zbx.fullname" . }}-web-http
               scheme: HTTP
             initialDelaySeconds: 15
             timeoutSeconds: 2
@@ -50,25 +50,25 @@ spec:
           - name: MYSQL_USER
             valueFrom:
              secretKeyRef:
-              name: {{ include "zb-k8s.fullname" . }}-db-secret
-              key: {{ include "zb-k8s.fullname" . }}-db-zbx-user
+              name: {{ include "zbx.fullname" . }}-db-secret
+              key: {{ include "zbx.fullname" . }}-db-zbx-user
           - name: MYSQL_PASSWORD
             valueFrom:
              secretKeyRef:
-              name: {{ include "zb-k8s.fullname" . }}-db-secret
-              key: {{ include "zb-k8s.fullname" . }}-db-zbx-pass
+              name: {{ include "zbx.fullname" . }}-db-secret
+              key: {{ include "zbx.fullname" . }}-db-zbx-pass
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
              secretKeyRef:
-              name: {{ include "zb-k8s.fullname" . }}-db-secret
-              key: {{ include "zb-k8s.fullname" . }}-db-root-pass
+              name: {{ include "zbx.fullname" . }}-db-secret
+              key: {{ include "zbx.fullname" . }}-db-root-pass
           - name: MYSQL_DATABASE
             value: "zabbix"
           volumeMounts:
-          - name: {{ include "zb-k8s.fullname" . }}-zabbix-web-ssl
+          - name: {{ include "zbx.fullname" . }}-zabbix-web-ssl
             mountPath: /etc/ssl/nginx
             readOnly: true
       volumes:
        - hostPath:
           path: /home/dotneft/zbx/zbx_env/etc/ssl/nginx/
-         name: {{ include "zb-k8s.fullname" . }}-zabbix-web-ssl
+         name: {{ include "zbx.fullname" . }}-zabbix-web-ssl

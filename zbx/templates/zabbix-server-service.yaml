@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "zb-k8s.fullname" . }}-zabbix-server
+  name: {{ include "zbx.fullname" . }}-zabbix-server
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
   ports:
   - port: 10051
     targetPort: 10051
-    name: {{ include "zb-k8s.fullname" . }}-zabbix-trapper
+    name: {{ include "zbx.fullname" . }}-zabbix-trapper
   - port: 162
     targetPort: 162
     protocol: UDP
-    name: {{ include "zb-k8s.fullname" . }}-snmp-trap
+    name: {{ include "zbx.fullname" . }}-snmp-trap
   selector:
-    name: {{ include "zb-k8s.fullname" . }}-zabbix-server
+    name: {{ include "zbx.fullname" . }}-zabbix-server
   externalIPs:
   - "{{ .Values.Web.ExternalIP }}"
