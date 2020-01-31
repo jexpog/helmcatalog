@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: {{ template "fullname" . }}-zabbix-java-gateway
+  name: {{ include "zb-k8s.fullname" . }}-zabbix-java-gateway
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     tier: java
@@ -10,17 +10,17 @@ spec:
   template:
     metadata:
       labels:
-        name: {{ template "fullname" . }}-zabbix-java-gateway
+        name: {{ include "zb-k8s.fullname" . }}-zabbix-java-gateway
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       containers:
-        - name: {{ template "fullname" . }}-zabbix-java-gateway
+        - name: {{ include "zb-k8s.fullname" . }}-zabbix-java-gateway
           image: zabbix/zabbix-java-gateway:alpine-3.4-latest
           imagePullPolicy: Always
           ports:
           - containerPort: 10052
             protocol: TCP
-            name: {{ template "fullname" . }}-zabbix-jmx
+            name: {{ include "zb-k8s.fullname" . }}-zabbix-jmx
           env:
           - name: ZBX_TIMEOUT
             value: "5"

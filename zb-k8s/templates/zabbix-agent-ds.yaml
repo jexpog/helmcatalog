@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: {{ template "fullname" . }}-zabbix-agent
+  name: {{ include "zb-k8s.fullname" . }}-zabbix-agent
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     tier: agent
@@ -13,11 +13,11 @@ spec:
   template:
     metadata:
       labels:
-        name: {{ template "fullname" . }}-zabbix-agent
+        name: {{ include "zb-k8s.fullname" . }}-zabbix-agent
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       containers:
-        - name: {{ template "fullname" . }}-zabbix-agent
+        - name: {{ include "zb-k8s.fullname" . }}-zabbix-agent
           image: zabbix/zabbix-agent:alpine-3.4-latest
           imagePullPolicy: Always
           resources:
@@ -29,7 +29,7 @@ spec:
             memory: 54Mi
           ports:
           - containerPort: 10050
-            name: {{ template "fullname" . }}-zabbix-agent
+            name: {{ include "zb-k8s.fullname" . }}-zabbix-agent
           env:
           - name: ZBX_SERVER_HOST
             value: "zabbix-server"
