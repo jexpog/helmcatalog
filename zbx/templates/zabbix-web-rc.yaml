@@ -22,12 +22,10 @@ spec:
             name: {{ include "zbx.fullname" . }}-web-http
           env:
           - name: DB_SERVER_HOST
-            value: "{{ .Values.serverdb }}"
+            value: {{ .Values.serverdb }}
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD
             value: "zabbix"
-          - name: MYSQL_ROOT_PASSWORD
-            value: "zabbix"
-          - name: MYSQL_DATABASE
-            value: "zabbix"
+          - name: ZBX_SERVER_HOST
+            value: "zbx-server"

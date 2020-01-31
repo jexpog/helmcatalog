@@ -1,5 +1,5 @@
 image.registry: docker.io
-image.tagzb: centos-3.4.17
+image.tagzb: centos-4.0.17
 imagepullPolicy: IfNotPresent
 serverdb: "localhost"
 memory: "4"
