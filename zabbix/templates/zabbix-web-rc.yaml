@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: {{ include "zabbix.fullname" . }}-web
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    tier: zabbix-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: {{ include "zabbix.fullname" . }}-web
+    spec:
+      containers:
+        - name: {{ include "zabbix.fullname" . }}-web
+          image: "zabbix/zabbix-web-apache-mysql:{{ .Values.image.tagzb }}"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+            name: {{ include "zabbix.fullname" . }}
+          env:
+          - name: DB_SERVER_HOST
+            value: {{ .Values.serverdb }}
+          - name: MYSQL_USER
+            value: "zabbix"
+          - name: MYSQL_PASSWORD
+            value: "zabbix"
