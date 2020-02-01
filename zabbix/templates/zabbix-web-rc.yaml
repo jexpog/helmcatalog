@@ -27,4 +27,6 @@ spec:
           - name: MYSQL_PASSWORD
             value: "zabbix"
           - name: PHP_TZ
-            value: "Europe/Madrid"  
+            value: "Europe/Madrid"
+          - name: ZBX_SERVER_HOST
+            value: zabbix-server 
