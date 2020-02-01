@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "zabbix.fullname" . }}-web
+  name: {{ include "zabbix.fullname" . }}-zabbix-server
   labels:
     {{- include "zabbix.labels" . | nindent 4 }}
 spec:
