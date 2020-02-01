@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "zabbix.fullname" . }}-zabbix-server
+spec:
+  selector:
+    name: zabbix-server
+  externalIPs:
+  - "{{ .Values.externalIP }}"  
+  ports:
+    - port: 10051
+      targetPort: 10051
+      name: zabbix-trapper
+  type: LoadBalancer

@@ -1,22 +1,19 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "zabbix.fullname" . }}-zabbix-server
-  labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-spec:
-  ports:
-  - port: 10051
-    targetPort: 10051
-    name: zabbix-trapper
-  - port: 10050
-    tergetPort: 10050
-    name: zabbix-sr-port
-  - port: 162
-    targetPort: 162
-    protocol: UDP
-    name: snmp-trap
-  selector:
-    name: zabbix-server
-  externalIPs:
-  - "{{ .Values.externalIP }}"
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: {{ include "zabbix.fullname" . }}-zabbix-server
+#  labels:
+#    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+#spec:
+#  ports:
+#  - port: 10051
+#    targetPort: 10051
+#    name: zabbix-trapper
+#  - port: 162
+#    targetPort: 162
+#    protocol: UDP
+#    name: snmp-trap
+#  selector:
+#    name: zabbix-server
+#  externalIPs:
+#  - "{{ .Values.externalIP }}"
