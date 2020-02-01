@@ -21,7 +21,7 @@ spec:
             name: {{ include "zabbix.fullname" . }}
           env:
           - name: DB_SERVER_HOST
-            value: {{ .Values.serverdb }}
+            value: "{{ .Values.serverdb }}"
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD

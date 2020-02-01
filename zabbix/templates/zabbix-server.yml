@@ -33,7 +33,7 @@ spec:
             periodSeconds: 20
           env:
           - name: DB_SERVER_HOST
-            value: {{ .Values.serverdb }}
+            value: zabbix-server
           - name: MYSQL_USER
             value: "zabbix"
           - name: MYSQL_PASSWORD
