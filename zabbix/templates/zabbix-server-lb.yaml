@@ -12,3 +12,5 @@ spec:
       name: zabbix-trapper
   selector:
     name: zabbix-server
+  externalIPs:
+  - "{{ .Values.externalIP }}"  
