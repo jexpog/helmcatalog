@@ -23,7 +23,7 @@ spec:
             name: zabbix-trapper
           - containerPort: 10050
             protocol: TCP
-            name: zabbix-server-port  
+            name: zabbix-sr-port  
           readinessProbe:
             tcpSocket:
               port: zabbix-trapper
