@@ -5,14 +5,7 @@ metadata:
   labels:
     {{- include "zabbix.labels" . | nindent 4 }}
 spec:
-  type: ClusterIP
   dnsAliases:
   - hostname: zabbix-service.zabbix.com
-  ports:
-    - port: 10051
-      targetPort: 10051
-      name: zabbix-trapper
   selector:
-    name: zabbix-server
-  externalIPs:
-  - "{{ .Values.externalIP }}"  
+    name: zabbix-server 
