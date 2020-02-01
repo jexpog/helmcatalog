@@ -10,7 +10,7 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: image.tag
-    default: "centos-4.0.0"
+    default: "centos-4.0.17"
     description: "Zabbix image tag"
     type: string
     label: Zabbix Image Tag
