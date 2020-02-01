@@ -21,6 +21,9 @@ spec:
           - containerPort: 10051
             protocol: TCP
             name: zabbix-trapper
+          - containerPort: 10050
+            protocol: TCP
+            name: zabbix-server-port  
           readinessProbe:
             tcpSocket:
               port: zabbix-trapper

@@ -26,3 +26,5 @@ spec:
             value: "zabbix"
           - name: MYSQL_PASSWORD
             value: "zabbix"
+          - name: PHP_TZ
+            value: "Europe/Madrid"  
