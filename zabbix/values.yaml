@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: zabbix/zabbix-server-mysql
-  tag: centos-4.0.17
+  tag: ubuntu-4.0.17
   pullPolicy: IfNotPresent
 
 ## resouces
