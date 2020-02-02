@@ -28,4 +28,4 @@ spec:
           - name: ZBX_PROXYMODE
             value: "0"
           - name: ZBX_SERVER_HOST
-            value: "zabbix-zabbix-server"
+            value: "10.244.1.88"
