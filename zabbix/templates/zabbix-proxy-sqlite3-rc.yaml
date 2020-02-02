@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: {{ include "zabbix.fullname" . }}-zabbix-proxy-sqlite3
-          image: zabbix/zabbix-proxy-sqlite3:alpine-3.4-latest
+          image: "zabbix/zabbix-proxy-sqlite3:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           ports:
           - containerPort: 10051
